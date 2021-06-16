@@ -1,3 +1,14 @@
-.App {
-  text-align: center;
+@use 'mixins' as m;
+
+* {
+  @include m.reset;
+}
+
+body {
+  width: 100%;
+  background-color: hsl(0, 0%, 7%);
+  @include m.font-face(
+    $color: hsl(0, 78%, 62%),
+    $align: center
+  );
 }
