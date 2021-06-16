@@ -2,16 +2,14 @@ import React, {useState, useEffect } from 'react'
 
 export default function DrumPad(props) {
   const activeStyle = {
-    backgroundColor: 'orange',
-    boxShadow: '0 3px orange',
-    height: 77,
-    marginTop: 13
+    backgroundColor: 'hsl(208, 80%, 63%)',
+    color: 'hsl(215, 96%, 17%)'
   };
 
   const inactiveStyle = {
-    backgroundColor: 'grey',
-    marginTop: 10,
-    boxShadow: '3px 3px 5px black'
+    backgroundColor: 'hsl(215, 96%, 17%)',
+    color: 'hsl(203, 100%, 94%)',
+    boxShadow: '3px 3px 5px hsl(215, 96%, 17%)'
   };
 
   const [padStyle, setPadStyle] = useState(inactiveStyle);

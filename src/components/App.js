@@ -5,14 +5,19 @@ import React, { useState } from 'react'
 
 export default function App() {
   const [power, setPower] = useState(true);
-  const [display, setDisplay] = useState(String.fromCharCode(160));
+  const [display, setDisplay] = useState('ON');
   const [currentPadBank, setCurrentPadBank] = useState(bankOne);
   const [currentPadBankId, setCurrentPadBankId] = useState('Heater Kit');
   const [sliderVal, setSliderVal] = useState(0.3);
 
   const powerControl = () => {
-    setPower(!power);
-    setDisplay(String.fromCharCode(160));
+    if(power) {
+      setPower(!power);
+      setDisplay('OFF');
+    } else {
+      setDisplay('ON');
+      setPower(!power);
+    }
   };
 
   const selectBank = () => {
@@ -74,35 +79,37 @@ export default function App() {
     <div id='drum-machine'>
       <h1>Drum Machine</h1>
 
-      <PadBank
-        clipVolume={sliderVal}
-        currentPadBank={currentPadBank}
-        power={power}
-        updateDisplay={displayClipName}
-      />
+      <div id='drum-box'>
+        <PadBank
+          clipVolume={sliderVal}
+          currentPadBank={currentPadBank}
+          power={power}
+          updateDisplay={displayClipName}
+        />
 
-      <div className='controls-container'>
-        <div className='control'>
-          <p>Power</p>
-          <div className='select' onClick={powerControl}>
-            <div className='inner' style={powerSlider} />
+        <div className='controls-container'>
+          <div className='control'>
+            <p>Power</p>
+            <div className='select' onClick={powerControl}>
+              <div className='inner' style={powerSlider} />
+            </div>
           </div>
-        </div>
-        <p id='display'>{display}</p>
-        <div className='volume-slider'>
-          <input
-            max='1'
-            min='0'
-            onChange={adjustVolume}
-            step='0.01'
-            type='range'
-            value={sliderVal}
-          />
-        </div>
-        <div className='control'>
-          <p>Bank</p>
-          <div className='select' onClick={selectBank}>
-            <div className='inner' style={bankSlider} />
+          <p id='display'>{display}</p>
+          <div className='volume-slider'>
+            <input
+              max='1'
+              min='0'
+              onChange={adjustVolume}
+              step='0.01'
+              type='range'
+              value={sliderVal}
+            />
+          </div>
+          <div className='control'>
+            <p>Bank</p>
+            <div className='select' onClick={selectBank}>
+              <div className='inner' style={bankSlider} />
+            </div>
           </div>
         </div>
       </div>
