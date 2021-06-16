@@ -1,7 +1,8 @@
-import '../styles/App.scss';
-import PadBank from './PadBank';
-import { bankOne, bankTwo } from '../libraries/SoundBanks';
 import React, { useState } from 'react'
+import PadBank from './PadBank';
+import Footer from './Footer';
+import { bankOne, bankTwo } from '../libraries/SoundBanks';
+import '../styles/App.scss';
 
 export default function App() {
   const [power, setPower] = useState(true);
@@ -113,6 +114,7 @@ export default function App() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }
